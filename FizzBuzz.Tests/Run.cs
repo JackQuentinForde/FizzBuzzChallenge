@@ -1,10 +1,11 @@
-using System.Data.SqlTypes;
-using System.IO;
+using FizzBuzz.FizzBuzzRules;
 
 namespace FizzBuzz.Tests
 {
     public class Tests
     {
+        private readonly IFizzBuzzRule[] rules = { new FizzBuzzRule(), new FizzRule(), new BuzzRule() };
+
         [Test]
         [TestCase(new int[] { 3 }, 1)]
         [TestCase(new int[] { 3, 5 }, 1)]
@@ -15,7 +16,7 @@ namespace FizzBuzz.Tests
         public void Outputs_Fizz_When_Numbers_Are_Divisible_By_3(int[] numbers, int expectedFizzCount)
         {
             // Arrange
-            var sut = new FizzBuzz();
+            var sut = new FizzBuzz(rules);
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
 
@@ -38,7 +39,7 @@ namespace FizzBuzz.Tests
         public void Outputs_Buzz_When_Numbers_Are_Divisible_By_5(int[] numbers, int expectedBuzzCount)
         {
             // Arrange
-            var sut = new FizzBuzz();
+            var sut = new FizzBuzz(rules);
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
 
@@ -59,7 +60,7 @@ namespace FizzBuzz.Tests
         public void Outputs_FizzBuzz_When_Numbers_Are_Divisible_By_3_And_5(int[] numbers, int expectedFizzBuzzCount)
         {
             // Arrange
-            var sut = new FizzBuzz();
+            var sut = new FizzBuzz(rules);
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
 
@@ -83,7 +84,7 @@ namespace FizzBuzz.Tests
         public void Outputs_Number_When_Numbers_Are_Not_Divisible_By_3_Or_5(int[] numbers, int[] expectedNumbers)
         {
             // Arrange
-            var sut = new FizzBuzz();
+            var sut = new FizzBuzz(rules);
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
 
@@ -102,7 +103,7 @@ namespace FizzBuzz.Tests
         public void Outputs_Expected_Result_When_Input_Is_1_To_100()
         {
             // Arrange
-            var sut = new FizzBuzz();
+            var sut = new FizzBuzz(rules);
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
             var numbers = Enumerable.Range(1, 100).ToArray();

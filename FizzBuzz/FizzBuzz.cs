@@ -1,30 +1,35 @@
-﻿namespace FizzBuzz
+﻿using FizzBuzz.FizzBuzzRules;
+
+namespace FizzBuzz
 {
     public class FizzBuzz
     {
-        public FizzBuzz() { }
+        private readonly IFizzBuzzRule[] rules;
+
+        public FizzBuzz(IFizzBuzzRule[] rules)
+        {
+            this.rules = rules;
+        }
 
         public void Run(int[] numbers)
         {
-            foreach (int number in numbers) 
+            foreach (int number in numbers)
             {
-                if (number % 3 == 0 && number % 5 == 0)
+                string output = GetOutput(number);
+                Console.WriteLine(output);
+            }
+        }
+
+        private string GetOutput(int number)
+        {
+            foreach (var rule in rules)
+            {
+                if (rule.IsMatch(number))
                 {
-                    Console.WriteLine("FizzBuzz");
-                }
-                else if (number % 3 == 0)
-                {
-                    Console.WriteLine("Fizz");
-                }
-                else if (number % 5 == 0)
-                {
-                    Console.WriteLine("Buzz");
-                }
-                else
-                {
-                    Console.WriteLine(number);
+                    return rule.GetOutput();
                 }
             }
+            return number.ToString();
         }
     }
 }
