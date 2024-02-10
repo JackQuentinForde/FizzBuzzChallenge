@@ -1,3 +1,5 @@
+using System.Data.SqlTypes;
+
 namespace FizzBuzz.Tests
 {
     public class Tests
@@ -28,6 +30,26 @@ namespace FizzBuzz.Tests
             // Assert
             int fizzCount = CountSubstringOccurrences(output, "Fizz");
             Assert.That(fizzCount, Is.EqualTo(expectedFizzCount));
+        }
+
+        [Test]
+        [TestCase(new int[] { 5 })]
+        public void Outputs_Number_When_Numbers_Are_Not_Divisible_By_3(int[] numbers)
+        {
+            // Arrange
+            var sut = new FizzBuzz();
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+            // Act
+            sut.Run(numbers);
+            var output = stringWriter.ToString();
+
+            // Assert
+            foreach (int num in numbers)
+            {
+                Assert.That(output.Contains(num.ToString()), Is.True, $"Expected number {num} not found in output.");
+            }
         }
 
         private int CountSubstringOccurrences(string text, string substring)
