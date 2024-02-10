@@ -12,6 +12,10 @@
                 {
                     Console.WriteLine("Fizz");
                 }
+                else if (number == 5)
+                {
+                    Console.WriteLine("Buzz");
+                }
                 else
                 {
                     Console.WriteLine(number);
