@@ -30,6 +30,10 @@ namespace FizzBuzz.Tests
         [Test]
         [TestCase(new int[] { 5 }, 1)]
         [TestCase(new int[] { 10 }, 1)]
+        [TestCase(new int[] { 5, 10 }, 2)]
+        [TestCase(new int[] { 5, 10, 11, 13 }, 2)]
+        [TestCase(new int[] { 5, 10, 20, 25, 35, 50 }, 6)]
+        [TestCase(new int[] { 5, 10, 20, 100, 3, 6, 36, 25, 35, 50 }, 7)]
         public void Outputs_Buzz_When_Numbers_Are_Divisible_By_5(int[] numbers, int expectedBuzzCount)
         {
             // Arrange
