@@ -4,11 +4,6 @@ namespace FizzBuzz.Tests
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         [TestCase(new int[] { 3 }, 1)]
         [TestCase(new int[] { 3, 5 }, 1)]
@@ -30,6 +25,24 @@ namespace FizzBuzz.Tests
             // Assert
             int fizzCount = CountSubstringOccurrences(output, "Fizz");
             Assert.That(fizzCount, Is.EqualTo(expectedFizzCount));
+        }
+
+        [Test]
+        [TestCase(new int[] { 5 }, 1)]
+        public void Outputs_Buzz_When_Numbers_Are_Divisible_By_5(int[] numbers, int expectedBuzzCount)
+        {
+            // Arrange
+            var sut = new FizzBuzz();
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+            // Act
+            sut.Run(numbers);
+            var output = stringWriter.ToString();
+
+            // Assert
+            int buzzCount = CountSubstringOccurrences(output, "Buzz");
+            Assert.That(buzzCount, Is.EqualTo(expectedBuzzCount));
         }
 
         [Test]
