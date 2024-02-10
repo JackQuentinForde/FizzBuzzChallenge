@@ -33,9 +33,9 @@ namespace FizzBuzz.Tests
         }
 
         [Test]
-        [TestCase(new int[] { 5 })]
-        [TestCase(new int[] { 5, 3 })]
-        public void Outputs_Number_When_Numbers_Are_Not_Divisible_By_3(int[] numbers)
+        [TestCase(new int[] { 5 }, new int[] { 5 })]
+        [TestCase(new int[] { 5, 3 }, new int[] { 5 })]
+        public void Outputs_Number_When_Numbers_Are_Not_Divisible_By_3(int[] numbers, int[] expectedNumbers)
         {
             // Arrange
             var sut = new FizzBuzz();
@@ -47,7 +47,7 @@ namespace FizzBuzz.Tests
             var output = stringWriter.ToString();
 
             // Assert
-            foreach (int num in numbers)
+            foreach (int num in expectedNumbers)
             {
                 Assert.That(output.Contains(num.ToString()), Is.True, $"Expected number {num} not found in output.");
             }
