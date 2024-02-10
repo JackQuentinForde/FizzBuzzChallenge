@@ -8,7 +8,8 @@
         {
             foreach (int number in numbers) 
             {
-                Console.WriteLine("Fizz");
+                if (number == 3)
+                    Console.WriteLine("Fizz");
             }
         }
     }
