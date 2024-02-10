@@ -35,6 +35,10 @@ namespace FizzBuzz.Tests
         [Test]
         [TestCase(new int[] { 5 }, new int[] { 5 })]
         [TestCase(new int[] { 5, 3 }, new int[] { 5 })]
+        [TestCase(new int[] { 3, 5, 6 }, new int[] { 5 })]
+        [TestCase(new int[] { 1, 3, 4 }, new int[] { 1, 4 })]
+        [TestCase(new int[] { 3, 9, 15, 5, 10, 11 }, new int[] { 5, 10, 11 })]
+        [TestCase(new int[] { 3, 6, 9, 12, 61, 73, 36, 60 }, new int[] { 61, 73 })]
         public void Outputs_Number_When_Numbers_Are_Not_Divisible_By_3(int[] numbers, int[] expectedNumbers)
         {
             // Arrange
