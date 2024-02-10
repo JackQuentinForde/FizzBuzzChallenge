@@ -8,7 +8,7 @@
         {
             foreach (int number in numbers) 
             {
-                Console.WriteLine(number);
+                Console.WriteLine("Fizz");
             }
         }
     }
