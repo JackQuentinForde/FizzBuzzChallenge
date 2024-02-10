@@ -9,6 +9,7 @@ namespace FizzBuzz.Tests
 
         [Test]
         [TestCase(new int[] { 3 }, 1)]
+        [TestCase(new int[] { 3, 5 }, 1)]
         public void Outputs_Fizz_When_Numbers_Are_Divisible_By_3(int[] numbers, int expectedFizzCount)
         {
             // Arrange
