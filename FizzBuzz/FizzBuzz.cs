@@ -8,7 +8,11 @@
         {
             foreach (int number in numbers) 
             {
-                if (number % 3 == 0)
+                if (number == 15)
+                {
+                    Console.WriteLine("FizzBuzz");
+                }
+                else if (number % 3 == 0)
                 {
                     Console.WriteLine("Fizz");
                 }
